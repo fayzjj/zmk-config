@@ -1,65 +1,31 @@
-# Piantor Pro BT V1.3 — Gallium + Seniply + 12-image nice!view test
+# Piantor Pro BT V1.4 — 9-image nice!view test
 
-This package is meant to be extracted **at the root of your fork of
-Keebart/zmk-config**.
+Fast GitHub Actions package.
 
-It keeps the V1.2 keymap changes:
-- Gallium colstag base
-- Seniply layer system
-- `?` on SYMBOL while keeping an independent `"`
-- fixed built-in `&sk` override
-- right outer thumb = FUN
+## Display behavior
+- Right nice!view: 9 selected images
+- Changes image every 10 seconds
+- Physical top 20 px: live split-link indicator + live battery percentage/bar
+- Artwork: 68x140 beneath the status strip
+- Left nice!view: unchanged standard ZMK nice!view screen
 
-Display test:
-- Left half: unchanged standard `nice_view`
-- Right half: standard `nice_view` hardware + `nice_view_art`
-- 12 images rotate every 15 seconds
-- artwork region: 140x68 native / 68x140 portrait
-- physical top 20 pixels intentionally blank in this first test
-- no battery/connection UI in the reserved strip yet; this build is only to
-  compare artwork readability on the real display
+## Keyboard
+Carries forward the prior V1.2 Gallium + Seniply keymap and config.
 
-## Install into GitHub
+## Build targets
+Only 2 targets are built for speed:
+1. piantor_pro_bt_left + nice_view
+2. piantor_pro_bt_right + nice_view + nice_view_art
 
-1. Open your fork of `Keebart/zmk-config`.
-2. Upload/extract this ZIP **into the repository root**, preserving folders.
-3. Allow replacements for:
-   - `build.yaml`
-   - `config/piantor_pro_bt.conf`
-   - `config/piantor_pro_bt.keymap`
-4. Commit the files.
-5. Open **Actions** and wait for the build workflow.
+Extract this ZIP over the root of your Keebart/zmk-config fork, preserving folders,
+commit, and run GitHub Actions.
 
-The Piantor targets should include:
-- `piantor_pro_bt_left` + `nice_view`
-- `piantor_pro_bt_right` + `nice_view nice_view_art`
-- both settings-reset targets
+If the build fails, send the last ~100 lines of the failing Actions log.
 
-## Flash
+## V1.5 inversion note
+Only the 9 artwork bitmaps were inverted 1:1 from V1.4 so that the physical
+nice!view panel's observed polarity reversal produces the desired black-background
+appearance on the keyboard.
 
-For the artwork test itself, the important firmware is the **right-half**
-Piantor UF2. The left-half UF2 is also built from the same V1.2 keymap package.
-
-If you have stale ZMK Studio settings overriding the keymap, flash the
-Piantor settings-reset UF2 once, then flash the normal firmware again.
-
-## If Actions fails
-
-Send the failing Actions log back to ChatGPT. This package is source/static
-checked here, but the authoritative compile test is the GitHub Actions ZMK v0.3
-toolchain used by the Keebart repository.
-
-
-## FAST TEST BUILD
-
-This FAST package intentionally builds only two targets:
-
-- `piantor_pro_bt_left` + `nice_view`
-- `piantor_pro_bt_right` + `nice_view nice_view_art`
-
-Corne, Sofle, and both Piantor `settings_reset` targets are omitted to reduce
-GitHub Actions build time.
-
-For the current display test, the right-half UF2 is the important artifact.
-If you later need `settings_reset`, use the full V1.3 package or add that target
-back to `build.yaml`.
+Slideshow timing, battery display, link status, keymap, build matrix, and all
+firmware behavior are unchanged from V1.4.

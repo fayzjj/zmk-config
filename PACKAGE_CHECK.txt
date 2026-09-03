@@ -1,8 +1,7 @@
-Piantor V1.3 FAST static package check: PASS
-Build targets: 2
-- piantor_pro_bt_left + nice_view
-- piantor_pro_bt_right + nice_view + nice_view_art
-Corne/Sofle targets: removed
-settings_reset targets: removed for speed
-Images: 12
-Slideshow: 15000 ms/image
+Piantor V1.5 static package check: PASS
+Change from V1.4: artwork bits inverted only
+Images: 9
+Rotation period: 10 seconds
+Battery/link logic: unchanged
+Keymap/config: unchanged
+Build targets: unchanged (2)
