@@ -1,0 +1,4 @@
+/*
+ * Display-only companion shield.
+ * The actual Sharp Memory LCD hardware is supplied by the standard nice_view shield.
+ */
