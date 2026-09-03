@@ -26,8 +26,9 @@
 #define NUM  4
 #define FUN  5
 
-// Override ZMK's built-in sticky-key behavior from <behaviors.dtsi>.
-// Do not define another `sk:` node label: node labels must be unique.
+
+// V1.2: override ZMK's built-in sticky-key behavior.
+// Do NOT declare another `sk:` node label after including <behaviors.dtsi>.
 &sk {
     release-after-ms = <1500>;
     ignore-modifiers;
@@ -59,12 +60,12 @@
             // │ TAB │ N │ R │ T │ S │ G │   │ P │ H │ A │ E │ I │ RET │
             // │CTRL │ X │ Q │ M │ W │ Z │   │ K │ F │ ' │ ; │ . │SHIFT│
             // └─────┴───┴───┴───┴───┴───┘   └───┴───┴───┴───┴───┴─────┘
-            //              NUM  EXT  SHIFT   SPC  SYM  F16
+            //              NUM  EXT  SHIFT   SPC  SYM  FUN
             bindings = <
 &kp ESC    &kp B  &kp L  &kp D  &kp C  &kp V      &kp J  &kp Y  &kp O     &kp U     &kp COMMA  &kp BSPC
 &kp TAB    &kp N  &kp R  &kp T  &kp S  &kp G      &kp P  &kp H  &kp A     &kp E     &kp I      &kp RET
 &kp LCTRL  &kp X  &kp Q  &kp M  &kp W  &kp Z      &kp K  &kp F  &kp SQT   &kp SEMI  &kp DOT    &kp RSHFT
-                      &mo NUM  &mo EXT  &kp LSHFT      &kp SPACE  &mo SYM  &kp F16
+                      &mo NUM  &mo EXT  &kp LSHFT      &kp SPACE  &mo SYM  &mo FUN
             >;
         };
 
@@ -99,7 +100,7 @@
             // 括号按手指分配：( ) 都在食指，{ } 都在中指，[ ] 都在无名指。
             // 主行放的是左括号 —— IDE 会自动补右括号，左括号用得更多。
             bindings = <
-&trans  &kp EXCL   &kp AT     &kp HASH   &kp DLLR   &kp PRCNT      &kp EQUAL  &kp GRAVE  &kp COLON  &kp SEMI   &kp PLUS   &trans
+&trans  &kp EXCL   &kp AT     &kp HASH   &kp DLLR   &kp PRCNT      &kp EQUAL  &kp GRAVE  &kp COLON  &kp QMARK  &kp PLUS   &trans
 &trans  &sk LALT   &sk LGUI   &sk LSHFT  &sk LCTRL  &kp CARET      &kp ASTRK  &kp LPAR   &kp LBRC   &kp LBKT   &kp MINUS  &trans
 &trans  &kp BSLH   &kp PIPE   &kp FSLH   &kp TILDE  &kp AMPS       &kp DQT    &kp RPAR   &kp RBRC   &kp RBKT   &kp UNDER  &trans
                                   &trans  &mo FUN  &mo NUM         &trans  &trans  &trans
