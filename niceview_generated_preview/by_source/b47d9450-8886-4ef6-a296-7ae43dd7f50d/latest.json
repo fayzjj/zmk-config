@@ -1,14 +1,12 @@
 {
   "source_file": "/home/runner/work/zmk-config/zmk-config/niceview_source/b47d9450-8886-4ef6-a296-7ae43dd7f50d.png",
   "source_filename": "b47d9450-8886-4ef6-a296-7ae43dd7f50d.png",
-  "source_stem": "b47d9450-8886-4ef6-a296-7ae43dd7f50d",
-  "hash": "765f5191dd7388ffd23ac4f32d30ec5b9ab547820d5656709b4e6da9d4d9400c",
   "source_hash": "765f5191dd7388ffd23ac4f32d30ec5b9ab547820d5656709b4e6da9d4d9400c",
-  "recipe_hash": "87463808027effc80619074361182f276322f8557bf73b80e6f7cb658816c6f0",
-  "cache_key": "f6227e41e96fc771a3c49458e2fc40f629754eae63312f1fe09caea9c793926f",
-  "cache_schema": 2,
-  "generated_at": "2026-09-04T16:57:28",
+  "recipe_hash": "12f7fa07b2175c1f6e8d1814bc210d166812ebcbb00330735529b5f07b308690",
+  "cache_key": "5f3d9f4c4886429fc5a44a03a1b39503f7df43f166642f1138faf8170d68aeac",
+  "cache_schema": 3,
+  "generated_at": "2026-09-04T17:32:52",
   "mode": "raw",
   "latest_png": "latest_68x140_1bit.png",
-  "latest_version": "20260904_165728_f6227e41e9_68x140_1bit.png"
+  "latest_version": "20260904_173252_5f3d9f4c48_68x140_1bit.png"
 }

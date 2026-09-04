@@ -14,6 +14,19 @@
       "latest_png": "latest_68x140_1bit.png",
       "latest_version": "20260904_165728_14b056c749_68x140_1bit.png",
       "version_png": "versions/20260904_165728_14b056c749_68x140_1bit.png"
+    },
+    {
+      "source_file": "/home/runner/work/zmk-config/zmk-config/niceview_source/47680db0-a55a-48d7-8d89-a336db0510a1.png",
+      "source_filename": "47680db0-a55a-48d7-8d89-a336db0510a1.png",
+      "source_hash": "163ce6e315bd78f7df9c5151dd9cf2c965bddcaa3110d6fa86aba2fa8a5e26cb",
+      "recipe_hash": "12f7fa07b2175c1f6e8d1814bc210d166812ebcbb00330735529b5f07b308690",
+      "cache_key": "7dd076a66620ccbec889639bc34208af6e7ff60e3dae5efb0e18b8abdd416eef",
+      "cache_schema": 3,
+      "generated_at": "2026-09-04T17:32:51",
+      "mode": "raw",
+      "latest_png": "latest_68x140_1bit.png",
+      "latest_version": "20260904_173251_7dd076a666_68x140_1bit.png",
+      "version_png": "versions/20260904_173251_7dd076a666_68x140_1bit.png"
     }
   ]
 }
