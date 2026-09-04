@@ -1,24 +1,26 @@
-Piantor V1.6.1 static patch check: PASS
+Piantor V1.6.2 static patch check: PASS
 
-Fix:
-- Removed duplicate `sk: sticky_key_seniply` devicetree node.
-- Reused ZMK built-in `&sk` behavior and only overrides:
-  - release-after-ms = 1500
-  - ignore-modifiers
+Requested key change:
+- EXT layer: Ctrl+W retained
+- NUM layer: AltGr / RAlt restored
 
-This specifically fixes:
-Label 'sk' appears on /behaviors/sticky_key and on /behaviors/sticky_key_seniply
+Compatibility fix retained:
+- no duplicate `sk:` label
+- uses built-in `&sk`
+- release-after-ms = 1500
+- ignore-modifiers
 
-Unchanged from V1.6:
-- Claude Gallium + Seniply keymap
+Unchanged:
+- Claude Gallium + Seniply base
 - right thumb Backspace
 - outer LCtrl / RShift
 - Caps Word
 - GAME layer
 - RGB disabled
 - 5 min idle / 1 hour sleep
-- 9 proven Nice!View artwork frames
-- top status bar physical polarity fix
+- 9 Nice!View artwork frames
+- artwork polarity fix
+- top status polarity fix
 - live battery/link status
 - 10 minute image rotation
 - Piantor-only left/right Actions targets

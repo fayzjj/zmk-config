@@ -53,3 +53,9 @@ GitHub Actions 应生成左右两份 UF2。
 Claude's uploaded `seniply.dtsi` redeclared the ZMK built-in `sk:` label.
 V1.6.1 removes that duplicate node and overrides the existing `&sk` behavior
 instead. No key positions or display behavior changed.
+
+## V1.6.2 shortcut adjustment
+
+- EXT layer keeps the newly requested `Ctrl+W` binding.
+- NUM layer is intentionally NOT changed to Ctrl+W; it remains `AltGr / RAlt`.
+- The V1.6.1 built-in `&sk` fix is retained.
