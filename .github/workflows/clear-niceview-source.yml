@@ -1,0 +1,59 @@
+name: Clear NiceView Source Images
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: niceview-source-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  clear:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Remove source images
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [ ! -d niceview_source ]; then
+            echo "niceview_source/ does not exist. Nothing to clear."
+            exit 0
+          fi
+
+          find niceview_source -type f \( \
+            -iname '*.png' -o \
+            -iname '*.jpg' -o \
+            -iname '*.jpeg' -o \
+            -iname '*.webp' -o \
+            -iname '*.bmp' \
+          \) -print -delete
+
+      - name: Commit cleared source folder
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if git diff --quiet -- niceview_source; then
+            echo "No source images to delete."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add -A niceview_source
+          git commit -m "Clear NiceView source images"
+
+          # Rebase if main moved while this action was running, then push.
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
