@@ -28,7 +28,7 @@ extern const uint8_t nv_frame_09[1360];
 
 static const uint8_t *const frames[] = { nv_frame_01, nv_frame_02, nv_frame_03, nv_frame_04, nv_frame_05, nv_frame_06, nv_frame_07, nv_frame_08, nv_frame_09 };
 #define FRAME_COUNT 9
-#define FRAME_PERIOD_MS 10000
+#define FRAME_PERIOD_MS 600000
 
 static lv_obj_t *img_obj;
 static uint8_t frame_index;

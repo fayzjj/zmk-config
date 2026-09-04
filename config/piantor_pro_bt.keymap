@@ -2,7 +2,7 @@
  * Piantor Pro BT (6-column, 42 keys) — Gallium + Seniply
  *
  * 这个文件只负责板级的东西（选物理布局、引头文件）。
- * 所有键位在 gallium_seniply.dtsi 里，将来 dongle 版直接 include 同一个文件。
+ * 所有键位在 seniply.dtsi 里，将来 dongle 版直接 include 同一个文件。
  */
 
 #include <behaviors.dtsi>
@@ -17,4 +17,4 @@
     };
 };
 
-#include "gallium_seniply.dtsi"
+#include "seniply.dtsi"

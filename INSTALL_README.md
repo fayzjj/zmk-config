@@ -1,48 +1,49 @@
-# Piantor Pro BT V1.4 — 9-image nice!view test
+# Piantor Pro BT — Gallium + Seniply + Nice!View Art (V1.6)
 
-Fast GitHub Actions package.
+这版以用户提供的 Claude 新版 Gallium + Seniply 配置为主体，
+合并之前已在真机验证过的 Nice!View 右屏 9 图轮播与状态栏修正。
 
-## Display behavior
-- Right nice!view: 9 selected images
-- Changes image every 10 seconds
-- Physical top 20 px: live split-link indicator + live battery percentage/bar
-- Artwork: 68x140 beneath the status strip
-- Left nice!view: unchanged standard ZMK nice!view screen
+## V1.6 合并内容
 
-## Keyboard
-Carries forward the prior V1.2 Gallium + Seniply keymap and config.
+### 来自 Claude 新版
+- Gallium colstag BASE
+- NUM / EXT / Shift / Space / SYM / Backspace 拇指分工
+- 右外拇指 Backspace
+- 左外下 Ctrl，右外下 RShift
+- Caps Word
+- Seniply EXT / SYM / NUM / FUN
+- QWERTY GAME 层
+- RShift 配合 Rime 做中英切换
+- RGB underglow 编译期关闭
+- 5 分钟 idle，1 小时 sleep
+- 不启用 soft-off
 
-## Build targets
-Only 2 targets are built for speed:
-1. piantor_pro_bt_left + nice_view
-2. piantor_pro_bt_right + nice_view + nice_view_art
+### 保留之前已经真机验证的 Nice!View 修改
+- 右半边 9 张之前的图片
+- 图片位图保持之前真机显示正确的反色极性
+- 顶部状态栏单独使用相反极性，保持黑底白色状态信息
+- 实时右半边电量
+- 实时左右连接状态
+- V1.5.1 display listener init 链接修复
 
-Extract this ZIP over the root of your Keebart/zmk-config fork, preserving folders,
-commit, and run GitHub Actions.
+### 本版唯一新的显示参数
+- 换图间隔：10 分钟（600000 ms）
+- 上一测试版：10 秒（10000 ms）
+- 定时换图唤醒频率降低到原来的 1/60
 
-If the build fails, send the last ~100 lines of the failing Actions log.
+## GitHub Actions
+为了继续保持编译快，build.yaml 只保留两个正式 target：
+- piantor_pro_bt_left
+- piantor_pro_bt_right
 
-## V1.5 inversion note
-Only the 9 artwork bitmaps were inverted 1:1 from V1.4 so that the physical
-nice!view panel's observed polarity reversal produces the desired black-background
-appearance on the keyboard.
+注意：因此本包没有 settings_reset target。
+如果 ZMK Studio 的 settings 覆盖了新键位，可临时使用 Keebart 原仓库的
+settings_reset target 清一次 settings，再恢复本 build.yaml。
 
-Slideshow timing, battery display, link status, keymap, build matrix, and all
-firmware behavior are unchanged from V1.4.
+## 安装
+把本包内容覆盖到 Keebart/zmk-config fork 根目录后 push。
+GitHub Actions 应生成左右两份 UF2。
 
-## V1.5.1 linker fix
-
-Corrected the generated ZMK display-listener initialization function names:
-
-- `widget_nv_battery_init()` -> `nv_battery_init()`
-- `widget_nv_link_init()` -> `nv_link_init()`
-
-No artwork, keymap, timing, status UI, or build-target changes.
-
-## V1.5.2 - physical status polarity fix
-
-Real-device testing showed that the artwork polarity is now correct, while only
-the live top status strip is reversed.
-
-This version inverts the runtime-drawn status strip only. Artwork bitmaps are
-unchanged from V1.5.1.
+## 说明
+本包没有在本地完整 Zephyr/ZMK 工具链中实际链接编译；
+已进行静态一致性检查。若 GitHub Actions 报错，请把错误末尾发回。
