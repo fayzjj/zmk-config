@@ -12,6 +12,7 @@ PW, PH = 68, 140
 NW, NH = 160, 68
 FRAME_BYTES = 1360
 PREVIEW_COLUMNS = 3
+CACHE_SCHEMA = 2
 
 
 def images_in(folder: Path):
@@ -31,6 +32,23 @@ def sha256_file(path: Path) -> str:
         for chunk in iter(lambda: f.read(1024 * 1024), b""):
             h.update(chunk)
     return h.hexdigest()
+
+
+def recipe_hash(mode: str, raw_defaults) -> str:
+    recipe = {
+        "cache_schema": CACHE_SCHEMA,
+        "mode": mode,
+        "raw_defaults": raw_defaults if mode == "raw" else {},
+        "physical_size": [PW, PH],
+        "native_size": [NW, NH],
+        "packing": "rotate_270_msb_first",
+    }
+    payload = json.dumps(recipe, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    return hashlib.sha256(payload).hexdigest()
+
+
+def cache_key(source_hash: str, recipe_digest: str) -> str:
+    return hashlib.sha256(f"{source_hash}:{recipe_digest}".encode("utf-8")).hexdigest()
 
 
 def flatten_black(im: Image.Image):
@@ -165,13 +183,14 @@ def source_group_dir(preview_root: Path, src: Path) -> Path:
     return preview_root / "by_source" / slugify(src.stem)
 
 
-def update_source_history(preview_root: Path, src: Path, art: Image.Image, digest: str, mode: str):
+def update_source_history(preview_root: Path, src: Path, art: Image.Image,
+                          source_digest: str, recipe_digest: str, key: str, mode: str):
     grp = source_group_dir(preview_root, src)
     versions = grp / "versions"
     versions.mkdir(parents=True, exist_ok=True)
     latest_png = grp / "latest_68x140_1bit.png"
     latest_meta = grp / "latest.json"
-    version_name = f"{datetime.now().strftime('%Y%m%d_%H%M%S')}_{digest[:10]}_68x140_1bit.png"
+    version_name = f"{datetime.now().strftime('%Y%m%d_%H%M%S')}_{key[:10]}_68x140_1bit.png"
     version_png = versions / version_name
     art.save(version_png)
     art.save(latest_png)
@@ -179,7 +198,11 @@ def update_source_history(preview_root: Path, src: Path, art: Image.Image, diges
         "source_file": str(src).replace('\\', '/'),
         "source_filename": src.name,
         "source_stem": src.stem,
-        "hash": digest,
+        "hash": source_digest,
+        "source_hash": source_digest,
+        "recipe_hash": recipe_digest,
+        "cache_key": key,
+        "cache_schema": CACHE_SCHEMA,
         "generated_at": datetime.now().isoformat(timespec="seconds"),
         "mode": mode,
         "latest_png": latest_png.name,
@@ -193,21 +216,25 @@ def update_source_history(preview_root: Path, src: Path, art: Image.Image, diges
 
 
 def get_or_build_source_art(preview_root: Path, src: Path, mode: str, raw_defaults):
-    digest = sha256_file(src)
+    source_digest = sha256_file(src)
+    recipe_digest = recipe_hash(mode, raw_defaults)
+    key = cache_key(source_digest, recipe_digest)
     grp = source_group_dir(preview_root, src)
     latest_meta_path = grp / "latest.json"
     latest_png_path = grp / "latest_68x140_1bit.png"
     latest_meta = load_json(latest_meta_path, None)
 
-    if latest_meta and latest_meta.get("hash") == digest and latest_png_path.exists():
+    if latest_meta and latest_meta.get("cache_key") == key and latest_png_path.exists():
         with Image.open(latest_png_path) as im:
             art = im.convert("1", dither=Image.Dither.NONE)
         if art.size == (PW, PH):
-            return art, digest, latest_png_path, "reused"
+            return art, source_digest, recipe_digest, key, latest_png_path, "reused"
 
     art = prepare_art_from_source(src, mode, raw_defaults)
-    latest_png_path, status = update_source_history(preview_root, src, art, digest, mode)
-    return art, digest, latest_png_path, status
+    latest_png_path, status = update_source_history(
+        preview_root, src, art, source_digest, recipe_digest, key, mode
+    )
+    return art, source_digest, recipe_digest, key, latest_png_path, status
 
 
 def copy_prepared_art_to_target(art_path: Path, target_path: Path):
@@ -250,7 +277,9 @@ def render_run_folder(folder: Path, items, root: Path, cfg):
             "index": idx,
             "source_file": str(item["source_path"]).replace('\\', '/'),
             "source_filename": item["source_path"].name,
-            "source_hash": item["digest"],
+            "source_hash": item["source_digest"],
+            "recipe_hash": item["recipe_digest"],
+            "cache_key": item["cache_key"],
             "status": item["status"],
             "prepared_source": str(item["prepared_path"]).replace('\\', '/'),
             "output_file": out_name,
@@ -315,12 +344,16 @@ def main():
     processed = 0
 
     for src in files:
-        art, digest, prepared_path, status = get_or_build_source_art(preview_root, src, mode, raw_defaults)
+        art, source_digest, recipe_digest, key, prepared_path, status = get_or_build_source_art(
+            preview_root, src, mode, raw_defaults
+        )
         frames.append(frame_bytes(art))
         items.append({
             "source_path": src,
             "prepared_path": prepared_path,
-            "digest": digest,
+            "source_digest": source_digest,
+            "recipe_digest": recipe_digest,
+            "cache_key": key,
             "status": status,
         })
         if status == "reused":
