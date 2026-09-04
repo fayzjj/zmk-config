@@ -1,3 +1,11 @@
+/* Reuse ZMK's built-in sticky-key behavior.
+ * Do NOT redeclare `sk:`: ZMK already defines that label.
+ */
+&sk {
+    release-after-ms = <1500>;
+    ignore-modifiers;
+};
+
 /*
  * Gallium + Seniply  —  42-key (Piantor Pro BT, 6-column)
  *
@@ -40,14 +48,6 @@
             continue-list = <UNDERSCORE MINUS BACKSPACE DELETE>;
         };
 
-        sk: sticky_key_seniply {
-            compatible = "zmk,behavior-sticky-key";
-            display-name = "Sticky Mod";
-            #binding-cells = <1>;
-            bindings = <&kp>;
-            release-after-ms = <1500>;
-            ignore-modifiers;
-        };
     };
 
     keymap {

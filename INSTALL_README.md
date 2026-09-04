@@ -47,3 +47,9 @@ GitHub Actions 应生成左右两份 UF2。
 ## 说明
 本包没有在本地完整 Zephyr/ZMK 工具链中实际链接编译；
 已进行静态一致性检查。若 GitHub Actions 报错，请把错误末尾发回。
+
+## V1.6.1 devicetree fix
+
+Claude's uploaded `seniply.dtsi` redeclared the ZMK built-in `sk:` label.
+V1.6.1 removes that duplicate node and overrides the existing `&sk` behavior
+instead. No key positions or display behavior changed.

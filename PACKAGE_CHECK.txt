@@ -1,25 +1,24 @@
-Piantor V1.6 static merge check: PASS
+Piantor V1.6.1 static patch check: PASS
 
-Keyboard config:
-- Claude-uploaded Gallium + Seniply: merged
-- seniply.dtsi filename/include: matched
-- right thumb Backspace: present
-- outer LCtrl / RShift: present
-- Caps Word: present
-- QWERTY GAME layer: present
-- RGB underglow: disabled
-- idle timeout: 5 min
-- sleep timeout: 1 hour
+Fix:
+- Removed duplicate `sk: sticky_key_seniply` devicetree node.
+- Reused ZMK built-in `&sk` behavior and only overrides:
+  - release-after-ms = 1500
+  - ignore-modifiers
 
-Nice!View:
-- exact previous art.c retained
-- 9 frames: verified
-- physical artwork polarity fix: retained
-- physical top-status polarity fix: retained
-- live battery/link listeners: retained
-- listener init linker fix: retained
-- slideshow: 600000 ms (10 minutes)
+This specifically fixes:
+Label 'sk' appears on /behaviors/sticky_key and on /behaviors/sticky_key_seniply
 
-Build:
-- only Piantor left/right normal targets
-- no Corne/Sofle/settings_reset targets
+Unchanged from V1.6:
+- Claude Gallium + Seniply keymap
+- right thumb Backspace
+- outer LCtrl / RShift
+- Caps Word
+- GAME layer
+- RGB disabled
+- 5 min idle / 1 hour sleep
+- 9 proven Nice!View artwork frames
+- top status bar physical polarity fix
+- live battery/link status
+- 10 minute image rotation
+- Piantor-only left/right Actions targets
