@@ -203,8 +203,8 @@ lv_obj_t *zmk_display_status_screen(void) {
     frame_index = 0;
     refresh_frame();
 
-    widget_nv_battery_init();
-    widget_nv_link_init();
+    nv_battery_init();
+    nv_link_init();
 
     lv_timer_create(slideshow_cb, FRAME_PERIOD_MS, NULL);
     return screen;

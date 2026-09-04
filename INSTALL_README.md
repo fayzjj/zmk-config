@@ -29,3 +29,12 @@ appearance on the keyboard.
 
 Slideshow timing, battery display, link status, keymap, build matrix, and all
 firmware behavior are unchanged from V1.4.
+
+## V1.5.1 linker fix
+
+Corrected the generated ZMK display-listener initialization function names:
+
+- `widget_nv_battery_init()` -> `nv_battery_init()`
+- `widget_nv_link_init()` -> `nv_link_init()`
+
+No artwork, keymap, timing, status UI, or build-target changes.

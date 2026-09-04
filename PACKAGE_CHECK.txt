@@ -1,7 +1,16 @@
-Piantor V1.5 static package check: PASS
-Change from V1.4: artwork bits inverted only
-Images: 9
-Rotation period: 10 seconds
-Battery/link logic: unchanged
-Keymap/config: unchanged
-Build targets: unchanged (2)
+Piantor V1.5.1 static patch check: PASS
+Fix:
+- widget_nv_battery_init() -> nv_battery_init()
+- widget_nv_link_init() -> nv_link_init()
+
+Unchanged:
+- 9 inverted artwork frames
+- 10 second slideshow
+- live battery status
+- live split-link status
+- Gallium + Seniply keymap/config
+- Piantor-only 2-target Actions matrix
+
+This specifically fixes the linker errors:
+undefined reference to `widget_nv_battery_init'
+undefined reference to `widget_nv_link_init'
