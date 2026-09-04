@@ -3,8 +3,12 @@
   "source_filename": "{16D8EAF0-5341-4520-AF93-16852CF03C66}.png",
   "source_stem": "{16D8EAF0-5341-4520-AF93-16852CF03C66}",
   "hash": "b8498ec5ad697df72b7772865e0d49f7819f18b84eff359fde15ab256152c429",
-  "generated_at": "2026-09-04T15:12:12",
+  "source_hash": "b8498ec5ad697df72b7772865e0d49f7819f18b84eff359fde15ab256152c429",
+  "recipe_hash": "87463808027effc80619074361182f276322f8557bf73b80e6f7cb658816c6f0",
+  "cache_key": "24db5c03dc233089b68464791d325f271e03209e74093536ef8c8a37e65320fc",
+  "cache_schema": 2,
+  "generated_at": "2026-09-04T16:15:23",
   "mode": "raw",
   "latest_png": "latest_68x140_1bit.png",
-  "latest_version": "20260904_151212_b8498ec5ad_68x140_1bit.png"
+  "latest_version": "20260904_161523_24db5c03dc_68x140_1bit.png"
 }
