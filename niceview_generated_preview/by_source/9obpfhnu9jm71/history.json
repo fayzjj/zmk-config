@@ -1,0 +1,15 @@
+{
+  "versions": [
+    {
+      "source_file": "/home/runner/work/zmk-config/zmk-config/niceview_source/9obpfhnu9jm71.jpg",
+      "source_filename": "9obpfhnu9jm71.jpg",
+      "source_stem": "9obpfhnu9jm71",
+      "hash": "2c7732eb8c49091326fc5f9a8acebfbac00e6398329635b1bf82f5ada2a12a06",
+      "generated_at": "2026-09-04T12:12:48",
+      "mode": "raw",
+      "latest_png": "latest_68x140_1bit.png",
+      "latest_version": "20260904_121248_2c7732eb8c_68x140_1bit.png",
+      "version_png": "versions/20260904_121248_2c7732eb8c_68x140_1bit.png"
+    }
+  ]
+}
