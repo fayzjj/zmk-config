@@ -66,7 +66,11 @@ static inline void set_native_px(int x, int y, bool on) {
 static inline void set_status_px(int sx, int sy, bool on) {
     int nx = 159 - sy;
     int ny = sx;
-    set_native_px(nx, ny, on);
+
+    /* Invert ONLY the runtime status strip polarity.
+     * The 9 artwork frames are already correct on the physical keyboard.
+     */
+    set_native_px(nx, ny, !on);
 }
 
 static void status_clear(void) {

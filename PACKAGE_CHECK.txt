@@ -1,16 +1,21 @@
-Piantor V1.5.1 static patch check: PASS
-Fix:
-- widget_nv_battery_init() -> nv_battery_init()
-- widget_nv_link_init() -> nv_link_init()
+Piantor V1.5.2 static patch check: PASS
+
+Based on real-device photo:
+- 9 artwork images are already correct.
+- only the top live status strip has reversed polarity.
+
+V1.5.2 changes ONLY:
+- runtime status strip pixel polarity: inverted
 
 Unchanged:
-- 9 inverted artwork frames
+- all 9 artwork arrays
 - 10 second slideshow
-- live battery status
+- live battery reading
 - live split-link status
-- Gallium + Seniply keymap/config
-- Piantor-only 2-target Actions matrix
+- Gallium + Seniply keymap
+- Piantor-only 2-target build matrix
+- V1.5.1 linker fix
 
-This specifically fixes the linker errors:
-undefined reference to `widget_nv_battery_init'
-undefined reference to `widget_nv_link_init'
+Expected physical result:
+- image area remains unchanged
+- top status area becomes black background with light/white indicators

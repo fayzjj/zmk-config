@@ -38,3 +38,11 @@ Corrected the generated ZMK display-listener initialization function names:
 - `widget_nv_link_init()` -> `nv_link_init()`
 
 No artwork, keymap, timing, status UI, or build-target changes.
+
+## V1.5.2 - physical status polarity fix
+
+Real-device testing showed that the artwork polarity is now correct, while only
+the live top status strip is reversed.
+
+This version inverts the runtime-drawn status strip only. Artwork bitmaps are
+unchanged from V1.5.1.
