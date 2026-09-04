@@ -1,11 +1,10 @@
-/* Reuse ZMK's built-in sticky-key behavior. */
+/* Reuse ZMK's built-in sticky-key behavior to avoid duplicate `sk` devicetree label. */
 &sk {
     release-after-ms = <1500>;
     ignore-modifiers;
 };
 
 /*
- * MERGED V4: keep proven thumb geometry + add EXT Ctrl+Shift+T and Ctrl+A.
  * Gallium + Seniply  —  42-key (Piantor Pro BT, 6-column)
  *
  * 字母层：Gallium colstag
@@ -55,17 +54,17 @@
         base_layer {
             display-name = "GALLIUM";
             // ┌─────┬───┬───┬───┬───┬───┐   ┌───┬───┬───┬───┬───┬─────┐
-            // │ ESC │ B │ L │ D │ C │ V │   │ J │ Y │ O │ U │ , │ DEL │
+            // │ ESC │ B │ L │ D │ C │ V │   │ J │ Y │ O │ U │ , │BSPC │
             // │ TAB │ N │ R │ T │ S │ G │   │ P │ H │ A │ E │ I │ RET │
             // │CTRL │ X │ Q │ M │ W │ Z │   │ K │ F │ ' │ ; │ . │SHIFT│
             // └─────┴───┴───┴───┴───┴───┘   └───┴───┴───┴───┴───┴─────┘
             // 斜杠和问号不在基础层，在 SYM 层（Gallium 30 键里没有 /）
-            //              NUM  EXT  SHIFT   SPC  SYM  BSPC
+            //              NUM  EXT  SHIFT   BSPC  SPC  SYM
             bindings = <
-&kp ESC    &kp B  &kp L  &kp D  &kp C  &kp V      &kp J  &kp Y  &kp O     &kp U     &kp COMMA  &kp DEL
+&kp ESC    &kp B  &kp L  &kp D  &kp C  &kp V      &kp J  &kp Y  &kp O     &kp U     &kp COMMA  &kp BSPC
 &kp TAB    &kp N  &kp R  &kp T  &kp S  &kp G      &kp P  &kp H  &kp A     &kp E     &kp I      &kp RET
 &kp LCTRL  &kp X  &kp Q  &kp M  &kp W  &kp Z      &kp K  &kp F  &kp SQT   &kp SEMI  &kp DOT    &kp RSHFT
-                      &mo NUM  &mo EXT  &kp LSHFT      &kp SPACE  &mo SYM  &kp BSPC
+                      &mo NUM  &mo EXT  &kp LSHFT      &kp BSPC  &kp SPACE  &mo SYM
             >;
         };
 
@@ -77,7 +76,7 @@
 &kp ESC    &kp Q  &kp W  &kp E  &kp R  &kp T      &kp Y  &kp U  &kp I      &kp O    &kp P     &kp BSPC
 &kp TAB    &kp A  &kp S  &kp D  &kp F  &kp G      &kp H  &kp J  &kp K      &kp L    &kp SEMI  &kp RET
 &kp LSHFT  &kp Z  &kp X  &kp C  &kp V  &kp B      &kp N  &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp LCTRL
-                      &kp LCTRL  &kp LALT  &kp SPACE      &kp SPACE  &mo NUM  &to BASE
+                      &kp LCTRL  &kp LALT  &kp SPACE      &mo NUM  &kp SPACE  &to BASE
             >;
         };
 
@@ -92,7 +91,7 @@
 &trans  &kp ESC     &kp LA(LEFT)  &kp LC(F)    &kp LA(RIGHT)  &kp LC(LS(T))       &kp PG_UP  &kp HOME   &kp UP    &kp END    &caps_w    &trans
 &trans  &sk LALT    &sk LGUI      &sk LSHFT    &sk LCTRL      &kp LC(W)      &kp PG_DN  &kp LEFT   &kp DOWN  &kp RIGHT  &kp DEL    &trans
 &trans  &kp LC(Z)   &kp LC(X)     &kp LC(C)    &kp LC(A)      &kp LC(V)     &kp RET    &kp BSPC   &kp TAB   &kp K_APP  &kp PSCRN  &trans
-                                  &trans  &trans  &mo NUM          &trans  &mo FUN  &trans
+                                  &trans  &trans  &mo NUM          &trans  &trans  &mo FUN
             >;
         };
 
