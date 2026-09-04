@@ -4,6 +4,7 @@
   "output_art_c": "boards/shields/nice_view_art/art.c",
   "output_header": "boards/shields/nice_view_art/art_frames.h",
   "preview_dir": "niceview_generated_preview",
+  "framebuffer_invert": true,
   "raw_defaults": {
     "width": 68,
     "height": 140,
