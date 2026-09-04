@@ -1,7 +1,7 @@
 /*
  * Piantor Pro BT V1.4 nice!view peripheral slideshow
- * - 9 images
- * - 10 s/image
+ * - dynamic frame count from art_frames.h
+ * - 2 min/image
  * - dynamic battery + split link status in physical top 20 px
  */
 #include <zephyr/kernel.h>
@@ -19,7 +19,7 @@
 #include "art_frames.h"
 
 #define FRAME_COUNT NV_FRAME_COUNT
-#define FRAME_PERIOD_MS 600000
+#define FRAME_PERIOD_MS 120000
 
 static lv_obj_t *img_obj;
 static uint8_t frame_index;
@@ -59,7 +59,7 @@ static inline void set_status_px(int sx, int sy, bool on) {
     int ny = sx;
 
     /* Invert ONLY the runtime status strip polarity.
-     * The 9 artwork frames are already correct on the physical keyboard.
+     * Artwork frames are already correct on the physical keyboard.
      */
     set_native_px(nx, ny, !on);
 }
