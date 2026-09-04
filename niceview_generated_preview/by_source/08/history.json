@@ -1,0 +1,15 @@
+{
+  "versions": [
+    {
+      "source_file": "/mnt/data/piantor_v1_7_2_auto_art_skipunchanged_bysource/niceview_source/08.png",
+      "source_filename": "08.png",
+      "source_stem": "08",
+      "hash": "f3c0938a535732f8d4336e2e64931567a3bc79d3f0c4a232db1ede059baa7e36",
+      "generated_at": "2026-09-04T11:24:12",
+      "mode": "raw",
+      "latest_png": "latest_68x140_1bit.png",
+      "latest_version": "20260904_112412_f3c0938a53_68x140_1bit.png",
+      "version_png": "versions/20260904_112412_f3c0938a53_68x140_1bit.png"
+    }
+  ]
+}

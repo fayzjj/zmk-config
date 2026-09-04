@@ -1,0 +1,88 @@
+{
+  "generated_at": "2026-09-04T11:24:13",
+  "mode": "raw",
+  "count": 9,
+  "items": [
+    {
+      "index": 1,
+      "source_file": "/mnt/data/piantor_v1_7_2_auto_art_skipunchanged_bysource/niceview_source/01.png",
+      "source_filename": "01.png",
+      "source_hash": "d4cad9ce0327a171167f2ec5c36c0b32d589f9011956754cb79cf4f13de7462e",
+      "status": "reused",
+      "prepared_source": "/mnt/data/piantor_v1_7_2_auto_art_skipunchanged_bysource/niceview_generated_preview/by_source/01/latest_68x140_1bit.png",
+      "output_file": "01_01_final_68x140_1bit.png"
+    },
+    {
+      "index": 2,
+      "source_file": "/mnt/data/piantor_v1_7_2_auto_art_skipunchanged_bysource/niceview_source/02.png",
+      "source_filename": "02.png",
+      "source_hash": "0d2be3a19dec8e872f9962838affee5199221bcb1fac348a128b8646e47171b7",
+      "status": "reused",
+      "prepared_source": "/mnt/data/piantor_v1_7_2_auto_art_skipunchanged_bysource/niceview_generated_preview/by_source/02/latest_68x140_1bit.png",
+      "output_file": "02_02_final_68x140_1bit.png"
+    },
+    {
+      "index": 3,
+      "source_file": "/mnt/data/piantor_v1_7_2_auto_art_skipunchanged_bysource/niceview_source/03.png",
+      "source_filename": "03.png",
+      "source_hash": "ce9090ea5456e0df39981dca8e2aa0aea3d04c33ed735cabe60e80367da7938b",
+      "status": "reused",
+      "prepared_source": "/mnt/data/piantor_v1_7_2_auto_art_skipunchanged_bysource/niceview_generated_preview/by_source/03/latest_68x140_1bit.png",
+      "output_file": "03_03_final_68x140_1bit.png"
+    },
+    {
+      "index": 4,
+      "source_file": "/mnt/data/piantor_v1_7_2_auto_art_skipunchanged_bysource/niceview_source/04.png",
+      "source_filename": "04.png",
+      "source_hash": "4aa9c1d3860e82c35d24e0e990e412c88651bb2b4a39d8604742b966caaa2696",
+      "status": "reused",
+      "prepared_source": "/mnt/data/piantor_v1_7_2_auto_art_skipunchanged_bysource/niceview_generated_preview/by_source/04/latest_68x140_1bit.png",
+      "output_file": "04_04_final_68x140_1bit.png"
+    },
+    {
+      "index": 5,
+      "source_file": "/mnt/data/piantor_v1_7_2_auto_art_skipunchanged_bysource/niceview_source/05.png",
+      "source_filename": "05.png",
+      "source_hash": "e156c8afd69b4c44e5250567f95ab16c1ab5f546b242306c4252b8325bf62d3b",
+      "status": "reused",
+      "prepared_source": "/mnt/data/piantor_v1_7_2_auto_art_skipunchanged_bysource/niceview_generated_preview/by_source/05/latest_68x140_1bit.png",
+      "output_file": "05_05_final_68x140_1bit.png"
+    },
+    {
+      "index": 6,
+      "source_file": "/mnt/data/piantor_v1_7_2_auto_art_skipunchanged_bysource/niceview_source/06.png",
+      "source_filename": "06.png",
+      "source_hash": "eb08d895717fcecc31a8567dc3a7cf28d4020c401b175d40bc9aea8637b99156",
+      "status": "reused",
+      "prepared_source": "/mnt/data/piantor_v1_7_2_auto_art_skipunchanged_bysource/niceview_generated_preview/by_source/06/latest_68x140_1bit.png",
+      "output_file": "06_06_final_68x140_1bit.png"
+    },
+    {
+      "index": 7,
+      "source_file": "/mnt/data/piantor_v1_7_2_auto_art_skipunchanged_bysource/niceview_source/07.png",
+      "source_filename": "07.png",
+      "source_hash": "2fadaf0e8d05f74e66a26a00822e7396d0462997509edbe79a52f9e84c0cccc8",
+      "status": "reused",
+      "prepared_source": "/mnt/data/piantor_v1_7_2_auto_art_skipunchanged_bysource/niceview_generated_preview/by_source/07/latest_68x140_1bit.png",
+      "output_file": "07_07_final_68x140_1bit.png"
+    },
+    {
+      "index": 8,
+      "source_file": "/mnt/data/piantor_v1_7_2_auto_art_skipunchanged_bysource/niceview_source/08.png",
+      "source_filename": "08.png",
+      "source_hash": "f3c0938a535732f8d4336e2e64931567a3bc79d3f0c4a232db1ede059baa7e36",
+      "status": "reused",
+      "prepared_source": "/mnt/data/piantor_v1_7_2_auto_art_skipunchanged_bysource/niceview_generated_preview/by_source/08/latest_68x140_1bit.png",
+      "output_file": "08_08_final_68x140_1bit.png"
+    },
+    {
+      "index": 9,
+      "source_file": "/mnt/data/piantor_v1_7_2_auto_art_skipunchanged_bysource/niceview_source/09.png",
+      "source_filename": "09.png",
+      "source_hash": "137a8a6319cedef7e6c8c07f963b97e09a5db40305661d1b72fe59b2f5d940d7",
+      "status": "reused",
+      "prepared_source": "/mnt/data/piantor_v1_7_2_auto_art_skipunchanged_bysource/niceview_generated_preview/by_source/09/latest_68x140_1bit.png",
+      "output_file": "09_09_final_68x140_1bit.png"
+    }
+  ]
+}
