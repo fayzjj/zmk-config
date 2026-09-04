@@ -5,6 +5,7 @@
 };
 
 /*
+ * MERGED V4: keep proven thumb geometry + add EXT Ctrl+Shift+T and Ctrl+A.
  * Gallium + Seniply  —  42-key (Piantor Pro BT, 6-column)
  *
  * 字母层：Gallium colstag
@@ -83,13 +84,14 @@
         extend_layer {
             display-name = "EXTEND";
             // 左手主行 = sticky 修饰键（Alt / Win / Shift / Ctrl）+ Ctrl+W（关标签页）
-            // AltGr 拿掉了：斯洛文尼亚语走系统的斯语键盘，US 布局下 AltGr 是死键
+            // 顶排最右是 Ctrl+Shift+T（恢复刚关的标签页），就在 Ctrl+W 正上方一格
+            // 底排原本多余的 Win 换成了 Ctrl+A，与 ^Z ^X ^C ^V 连成一排
             // 右手 = 导航；Backspace 落在右食指，Delete 落在右小指主行
             // 例：Ctrl+A = EXT + t(Ctrl位) + a ;  Alt+Tab = EXT + n(Alt位) + ,位
             bindings = <
-&trans  &kp ESC     &kp LA(LEFT)  &kp LC(F)    &kp LA(RIGHT)  &kp INS        &kp PG_UP  &kp HOME   &kp UP    &kp END    &caps_w    &trans
+&trans  &kp ESC     &kp LA(LEFT)  &kp LC(F)    &kp LA(RIGHT)  &kp LC(LS(T))       &kp PG_UP  &kp HOME   &kp UP    &kp END    &caps_w    &trans
 &trans  &sk LALT    &sk LGUI      &sk LSHFT    &sk LCTRL      &kp LC(W)      &kp PG_DN  &kp LEFT   &kp DOWN  &kp RIGHT  &kp DEL    &trans
-&trans  &kp LC(Z)   &kp LC(X)     &kp LC(C)    &kp LGUI       &kp LC(V)      &kp RET    &kp BSPC   &kp TAB   &kp K_APP  &kp PSCRN  &trans
+&trans  &kp LC(Z)   &kp LC(X)     &kp LC(C)    &kp LC(A)      &kp LC(V)     &kp RET    &kp BSPC   &kp TAB   &kp K_APP  &kp PSCRN  &trans
                                   &trans  &trans  &mo NUM          &trans  &mo FUN  &trans
             >;
         };
@@ -113,7 +115,7 @@
             // 外侧列在本层是蓝牙配置位，需要按住 NUM 才能碰到
             bindings = <
 &bt BT_SEL 0  &trans     &trans     &trans     &trans     &kp KP_NUM     &kp EQUAL  &kp N7  &kp N8  &kp N9  &kp PLUS   &bt BT_SEL 3
-&bt BT_SEL 1  &sk LALT   &sk LGUI   &sk LSHFT  &sk LCTRL  &sk RALT      &kp ASTRK  &kp N4  &kp N5  &kp N6  &kp MINUS  &bt BT_SEL 4
+&bt BT_SEL 1  &sk LALT   &sk LGUI   &sk LSHFT  &sk LCTRL  &sk RALT       &kp ASTRK  &kp N4  &kp N5  &kp N6  &kp MINUS  &bt BT_SEL 4
 &bt BT_SEL 2  &trans     &kp K_APP  &kp TAB    &kp BSPC   &kp RET        &kp N0     &kp N1  &kp N2  &kp N3  &kp FSLH   &bt BT_CLR
                                     &trans  &trans  &trans         &trans  &trans  &trans
             >;
