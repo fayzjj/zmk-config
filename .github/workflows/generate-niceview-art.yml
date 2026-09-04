@@ -12,12 +12,21 @@ on:
 permissions:
   contents: write
 
+# Only keep the newest NiceView generation for a branch.
+# If several source-image commits arrive quickly, the older run is cancelled
+# instead of racing the newer run for the same main branch.
+concurrency:
+  group: niceview-art-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -57,4 +66,11 @@ jobs:
             niceview_generated_preview
 
           git commit -m "Generate NiceView 1-bit art and previews"
-          git push
+
+          # main may have moved while image conversion was running (for example,
+          # a firmware/keymap commit landed). Rebase the generated commit onto
+          # the current remote head before pushing, so a harmless concurrent
+          # commit does not cause a non-fast-forward failure.
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
