@@ -1,0 +1,47 @@
+name: Generate NiceView Art
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "niceview_source/**/*.png"
+      - "niceview_source/**/*.jpg"
+      - "niceview_source/**/*.jpeg"
+      - "niceview_source/**/*.webp"
+      - "niceview_source/**/*.bmp"
+      - "niceview_art.json"
+      - "scripts/build_niceview_art.py"
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Pillow
+        run: python -m pip install "Pillow>=10,<12"
+
+      - name: Convert RAW images to NiceView 1-bit art
+        run: python scripts/build_niceview_art.py
+
+      - name: Commit generated art.c
+        shell: bash
+        run: |
+          if git diff --quiet -- boards/shields/nice_view_art/art.c; then
+            echo "No art.c changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add boards/shields/nice_view_art/art.c
+          git commit -m "Generate NiceView 1-bit art"
+          git push
